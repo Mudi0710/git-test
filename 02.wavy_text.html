@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <title>Document</title>
+
+  <style>
+    * {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      /* transparent 是透明 */
+      background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+    }
+
+    /* 思維一：設定到這裡，會發現背景變成條紋狀，是因為 body 沒有高度，因此需要讓 body 繼承 根元素(html) 的高度 */
+
+    /* 思維二：所以設定 height 100% */
+    html,
+    body {
+      height: 100%;
+    }
+
+    div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* 可以用 Can I use 查詢特定效果是否可以使用在 https://caniuse.com/ */
+      /* -webkit-box-reflect 是用來製作倒影的；數值則是倒影與文字的距離，正數越大離主體越遠、負數越大離主體越近
+      above 生成在文字上方
+      below 生成在文字下方
+      left 生成在文字左方
+      right 生成在文字右方
+      */
+      -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(0, 0, 0, 0.3));
+    }
+
+    div span {
+      display: inline-block;
+      font-size: 3rem;
+      margin: 0 1rem;
+      text-shadow:
+        1px 1px 1px rgba(0, 0, 0, 0.5),
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        1px 1px 3px rgba(0, 0, 0, 0.1);
+      animation: jump 1s ease-in-out infinite;
+    }
+
+    /* 利用 :nth-child() 設定延遲時間，產生波浪感 */
+    div span:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    div span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    div span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    div span:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    div span:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    div span:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    div span:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    div span:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes jump {
+      from {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-50px) rotate(360deg);
+      }
+
+      51% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(0px) rotate(360deg);
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    <span>F</span>
+    <span>R</span>
+    <span>O</span>
+    <span>N</span>
+    <span>T</span>
+    <span>E</span>
+    <span>N</span>
+    <span>D</span>
+  </div>
+</body>
+
+</html>
